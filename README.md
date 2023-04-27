@@ -14,6 +14,8 @@
 
 <details><summary> 🏗 Deploy: </summary>
 
+<br>
+
 ```commandline
 docker-compose up -d --build
 ```
