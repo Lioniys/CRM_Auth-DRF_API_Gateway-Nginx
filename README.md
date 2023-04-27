@@ -22,4 +22,4 @@ docker-compose up -d --build
 
 </details>
 
-![Image alt](https://github.com/Lioniys/CRM_Auth-DRF_API_Gateway-Nginx/raw/main/screenshots/srm.png)
+![Image alt](https://github.com/Lioniys/CRM_Auth-DRF_API_Gateway-Nginx/raw/main/screenshots/crm.png)
