@@ -1,23 +1,38 @@
 version: '3.8'
 
 services:
-  web:
-    build: .
-    command: python src/manage.py runserver 0.0.0.0:8000
-    volumes:
-      - .:/app
+  api_gateway:
+    container_name: api_gateway
+    build: ./nginx
+    networks:
+      - crm
     ports:
-      - "8000:8000"
+      - "80:80"
+
+  auth:
+    container_name: auth
+    build: .
+    networks:
+      - crm
+    command: ["/drf_app/auth/run_auth.sh"]
     env_file:
       - ./.env
     depends_on:
-      - db
-  db:
+      - auth_db
+
+  auth_db:
+    container_name: auth_db
     image: postgres:12.0-alpine
+    networks:
+      - crm
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     env_file:
-      - ./.env.db
+      - ./.env
+
+networks:
+    crm:
+      name: crm-net
 
 volumes:
   postgres_data:
